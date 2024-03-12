@@ -49,7 +49,8 @@ SET default_table_access_method = heap;
 
 CREATE TABLE public.g_type (
     g_type_id integer NOT NULL,
-    name character varying(40) NOT NULL
+    name character varying(40) NOT NULL,
+    have_visited boolean
 );
 
 
@@ -159,7 +160,8 @@ ALTER SEQUENCE public.moon_moon_id_seq OWNED BY public.moon.moon_id;
 
 CREATE TABLE public.p_type (
     p_type_id integer NOT NULL,
-    name character varying(40) NOT NULL
+    name character varying(40) NOT NULL,
+    have_visited integer
 );
 
 
@@ -232,7 +234,8 @@ ALTER SEQUENCE public.planet_planet_id_seq OWNED BY public.planet.planet_id;
 
 CREATE TABLE public.s_type (
     s_type_id integer NOT NULL,
-    name character varying(40) NOT NULL
+    name character varying(40) NOT NULL,
+    have_visited boolean
 );
 
 
@@ -352,9 +355,9 @@ ALTER TABLE ONLY public.star ALTER COLUMN star_id SET DEFAULT nextval('public.st
 -- Data for Name: g_type; Type: TABLE DATA; Schema: public; Owner: freecodecamp
 --
 
-INSERT INTO public.g_type VALUES (1, 'Spiral');
-INSERT INTO public.g_type VALUES (2, 'Elliptical');
-INSERT INTO public.g_type VALUES (3, 'Irregular');
+INSERT INTO public.g_type VALUES (1, 'Spiral', false);
+INSERT INTO public.g_type VALUES (2, 'Elliptical', false);
+INSERT INTO public.g_type VALUES (3, 'Irregular', false);
 
 
 --
@@ -403,11 +406,11 @@ INSERT INTO public.moon VALUES (20, 'Triton', 13, 276, true, 'retrograde orbit.'
 -- Data for Name: p_type; Type: TABLE DATA; Schema: public; Owner: freecodecamp
 --
 
-INSERT INTO public.p_type VALUES (1, 'Terrestrial');
-INSERT INTO public.p_type VALUES (2, 'Hot Jupiter');
-INSERT INTO public.p_type VALUES (3, 'Super-Earth');
-INSERT INTO public.p_type VALUES (4, 'Gas Giant');
-INSERT INTO public.p_type VALUES (5, 'Ice Giant');
+INSERT INTO public.p_type VALUES (1, 'Terrestrial', 1);
+INSERT INTO public.p_type VALUES (2, 'Hot Jupiter', 13);
+INSERT INTO public.p_type VALUES (3, 'Super-Earth', 0);
+INSERT INTO public.p_type VALUES (4, 'Gas Giant', 8);
+INSERT INTO public.p_type VALUES (5, 'Ice Giant', 6);
 
 
 --
@@ -433,12 +436,12 @@ INSERT INTO public.planet VALUES (13, 'Neptune', 1, 5, '1846', 0, 'system of dar
 -- Data for Name: s_type; Type: TABLE DATA; Schema: public; Owner: freecodecamp
 --
 
-INSERT INTO public.s_type VALUES (1, 'G-type main-sequence star');
-INSERT INTO public.s_type VALUES (2, 'A-type main-sequence star');
-INSERT INTO public.s_type VALUES (3, 'K-type main-sequence star');
-INSERT INTO public.s_type VALUES (4, 'M-type supergiant');
-INSERT INTO public.s_type VALUES (5, 'B-type supergiant');
-INSERT INTO public.s_type VALUES (6, 'F-type giant star');
+INSERT INTO public.s_type VALUES (1, 'G-type main-sequence star', false);
+INSERT INTO public.s_type VALUES (2, 'A-type main-sequence star', false);
+INSERT INTO public.s_type VALUES (3, 'K-type main-sequence star', false);
+INSERT INTO public.s_type VALUES (4, 'M-type supergiant', false);
+INSERT INTO public.s_type VALUES (5, 'B-type supergiant', false);
+INSERT INTO public.s_type VALUES (6, 'F-type giant star', false);
 
 
 --
